@@ -1,0 +1,118 @@
+.meetVideoContainer {
+    position: relative;
+    height: 100vh;
+    background: rgb(0, 0, 0);
+}
+
+.meetUserVideo {
+    position: absolute;
+    bottom: 10vh;
+    height: 20vh;
+    width: auto;
+    left: 0;
+    border-radius: 20px;
+}
+
+
+.meetUserVideo.withRemoteUsers {
+    width: 200px !important;
+    height: 150px !important;
+    position: absolute !important;
+    bottom: 80px !important;
+    right: 20px !important;
+    z-index: 10 !important;
+    border: 2px solid #fff !important;
+    border-radius: 10px !important;
+}
+
+.buttonContainers {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    text-align: center;
+}
+
+.buttonContainers svg {
+    font-size: 3rem;
+}
+
+.conferenceView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    height: calc(100vh - 120px);
+    padding: 10px;
+    gap: 10px;
+}
+
+
+.conferenceView.chatClosed {
+    width: 100%;
+}
+
+
+.conferenceView.singleUser {
+    width: 70vw;
+    height: calc(100vh - 120px);
+}
+
+.conferenceView.singleUser.chatClosed {
+    width: 100%;
+}
+
+.conferenceView.singleUser video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.conferenceView.multipleUsers {
+    display: grid;
+    gap: 10px;
+}
+
+.conferenceView.multipleUsers.twoUsers {
+    grid-template-columns: 1fr 1fr;
+}
+
+.conferenceView.multipleUsers.threeUsers {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.conferenceView.multipleUsers.fourOrMoreUsers {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.conferenceView.multipleUsers video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.chatRoom {
+    position: absolute;
+    height: 90vh;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    width: 30vw;
+    padding-inline: 20px;
+}
+
+.chatContainer {
+    position: relative;
+    height: 100%;
+}
+
+
+.chattingArea {
+    position: absolute;
+    bottom: 0;
+}

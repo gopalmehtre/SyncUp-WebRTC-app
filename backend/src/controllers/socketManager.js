@@ -1,4 +1,3 @@
-import { Socket } from "node:dgram";
 import { Server } from "socket.io";
 
 let connections = {}
@@ -17,10 +16,11 @@ export const connectToSocket = (server) => {
 
     io.on("connection", (socket)=> {
 
-        console.log("something connected")
+        console.log("User connected:", socket.id)
 
         //joining the call
         socket.on("join-call", (path) => {
+            console.log("User", socket.id, "joining path:", path);
             
             if(connections[path]===undefined) {
                 connections[path]=[]
@@ -30,20 +30,23 @@ export const connectToSocket = (server) => {
 
             timeOnline[socket.id] = new Date();
 
+            console.log("Room", path, "now has users:", connections[path]);
+
             for(let a=0 ; a<connections[path].length; a++) {
                 io.to(connections[path][a]).emit("user-joined", socket.id, connections[path])
             }
 
-            if (message[path] !== undefined) {
+            if (messages[path] !== undefined) {
                 for(let a=0; a<messages[path].length; a++) {
-                    io.to(socket.id).emit("chat-message", message[path][a]['data'],
-                    message[path][a]['sender'], messages[path][a]['socket-id-sender'])
+                    io.to(socket.id).emit("chat-message", messages[path][a]['data'],
+                    messages[path][a]['sender'], messages[path][a]['socket-id-sender'])
                 }
             }
 
         })
 
         socket.on("signal", (toId, message) => {
+            console.log("Relaying signal from", socket.id, "to", toId);
             io.to(toId).emit("signal", socket.id, message);
         })
 
@@ -73,6 +76,7 @@ export const connectToSocket = (server) => {
         })
 
         socket.on("disconnect", ()=> {
+            console.log("User disconnected:", socket.id);
 
             var diffTime = Math.abs(timeOnline[socket.id] - new Date())
 
