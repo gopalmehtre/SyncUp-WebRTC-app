@@ -1,8 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import "../App.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 export default function LandingPage() {
+
+    const router = useNavigate();
+
   return (
     <div className='landingPageContainer'>
         <nav>
@@ -11,9 +14,18 @@ export default function LandingPage() {
             </div>
 
             <div className='navlist'>
-                <p>Join as Guest</p>
-                <p>Register</p>
-                <div role='button'>
+                <p onClick={()=> {
+                    router("/123abc")
+                }} >Join as Guest</p>
+
+                <p onClick={()=> {
+                    router('/auth')
+                }} >Register</p>
+
+
+                <div onClick={()=>{
+                    router('/auth')
+                }} role='button'>
                     <p>Login</p>
                 </div>
                 
@@ -23,10 +35,10 @@ export default function LandingPage() {
 
         <div className='landingMainContainer'>
             <div>
-                <h1><span style={{color: '#9999ff'}} >Connect</span> with your loved Ones!</h1>
+                <h1><span style={{color: '#9999ff'}} >Connect</span> with your loved Ones.</h1>
                 <p>Cover distance with SyncUP!</p>
                 <div role='button' >
-                    <Link to={"/auth"}>Get Started</Link>
+                    <Link to={"/auth"}>Get Started!</Link>
                 </div>
             </div>
             <div>
