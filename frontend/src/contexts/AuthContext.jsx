@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useContext,useState } from "react";
 import httpStatus from "http-status";
 import { useNavigate } from "react-router-dom";
-import server from "../enviroment.js";
+import server from "../../enviroment.js";
 
 
 
