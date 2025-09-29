@@ -2,6 +2,7 @@
 
 SyncUP is a full-stack web application that provides real-time video and audio communication, screen sharing, and chat functionalities, built with the MERN stack (MongoDB, Express, React, Node.js) and WebRTC.
 
+Project Link: https://sync-up-web-rtc-app-0.vercel.app/
 
 ![Landing Page](/frontend/public/mobile.png)
 
